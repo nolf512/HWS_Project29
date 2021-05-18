@@ -11,8 +11,26 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var currentGame: GameScene!
+    
+    //UI
+    @IBOutlet var angelSlider: UISlider!
+    @IBOutlet var angelLabel: UILabel!
+    
+    @IBOutlet var velocitySlider: UISlider!
+    @IBOutlet var velocityLabel: UILabel!
+    
+    @IBOutlet var launchButton: UIButton!
+    
+    @IBOutlet var playerNumber: UILabel!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -22,6 +40,9 @@ class GameViewController: UIViewController {
                 
                 // Present the scene
                 view.presentScene(scene)
+                
+                currentGame = scene as? GameScene
+                currentGame.viewController = self
             }
             
             view.ignoresSiblingOrder = true
@@ -46,4 +67,17 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    @IBAction func angelChanged(_ sender: Any) {
+    }
+    
+    
+    
+    @IBAction func velocityChanged(_ sender: Any) {
+    }
+    
+    
+    @IBAction func launch(_ sender: Any) {
+    }
+    
 }
