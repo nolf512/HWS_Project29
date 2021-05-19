@@ -17,13 +17,15 @@ enum CollisionTypes: UInt32 {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var buildings = [BuildingNode]()
+    
     var player1: SKSpriteNode!
     var player2: SKSpriteNode!
     var banana: SKSpriteNode!
 
     var currentPlayer = 1
     
-    var buildings = [BuildingNode]()
+   
     weak var viewController: GameViewController!
     
     override func didMove(to view: SKView) {
@@ -153,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let secondNode = secondBody.node else { return }
         
         if firstNode.name == "banana" && secondNode.name == "building" {
-            //bananaHit
+            bananaHit(building: secondNode, atPoint: contact.contactPoint)
         }
         
         if firstNode.name == "banana" && secondNode.name == "player1" {
@@ -205,7 +207,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func bananaHit(building: SKNode, atPoint contactPoint: CGPoint){
         guard let building = building as? BuildingNode else  { return }
         let buildingLocation = convert(contactPoint, to: building)
-        //building.hit
+        building.hit(at: buildingLocation)
         
         if let explosion = SKEmitterNode(fileNamed: "hitBuilding") {
             explosion.position = contactPoint
@@ -220,6 +222,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
+    override func update(_ currentTime: TimeInterval) {
+        guard banana != nil else { return }
+        
+        if abs(banana.position.y) > 1000 {
+            banana.removeFromParent()
+            banana = nil
+            changePlayer()
+        }
+    }
     
 }
