@@ -13,13 +13,15 @@ enum CollisionTypes: UInt32 {
     case player = 4
 }
 
-var player1: SKSpriteNode!
-var player2: SKSpriteNode!
-var banana: SKSpriteNode!
 
-var currentPlayer = 1
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var player1: SKSpriteNode!
+    var player2: SKSpriteNode!
+    var banana: SKSpriteNode!
+
+    var currentPlayer = 1
     
     var buildings = [BuildingNode]()
     weak var viewController: GameViewController!
@@ -179,11 +181,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             newGame.viewController = self.viewController
             self.viewController.currentGame = newGame
             
-            //changePlayer
+            self.changePlayer()
+            newGame.currentPlayer = self.currentPlayer
+            
+
             
             let transition = SKTransition.doorway(withDuration: 1.5)
             self.view?.presentScene(newGame, transition: transition)
         }
+        
+    }
+    
+    func changePlayer(){
+        if currentPlayer == 1 {
+            currentPlayer = 2
+        } else {
+            currentPlayer = 1
+        }
+        
+        viewController.activatePlayer(number: currentPlayer)
         
     }
     
