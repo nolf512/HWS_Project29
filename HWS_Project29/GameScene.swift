@@ -157,11 +157,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if firstNode.name == "banana" && secondNode.name == "player1" {
-            //destroy
+            destroy(player: player1)
         }
         
         if firstNode.name == "banana" && secondNode.name == "player2" {
-            //destroy
+            destroy(player: player2)
         }
         
     }
@@ -184,8 +184,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.changePlayer()
             newGame.currentPlayer = self.currentPlayer
             
-
-            
             let transition = SKTransition.doorway(withDuration: 1.5)
             self.view?.presentScene(newGame, transition: transition)
         }
@@ -202,6 +200,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         viewController.activatePlayer(number: currentPlayer)
         
     }
+    
+    
+    func bananaHit(building: SKNode, atPoint contactPoint: CGPoint){
+        guard let building = building as? BuildingNode else  { return }
+        let buildingLocation = convert(contactPoint, to: building)
+        //building.hit
+        
+        if let explosion = SKEmitterNode(fileNamed: "hitBuilding") {
+            explosion.position = contactPoint
+            addChild(explosion)
+        }
+        
+        banana.name = ""
+        banana.removeFromParent()
+        banana = nil
+        
+        changePlayer()
+        
+    }
+    
     
     
 }
