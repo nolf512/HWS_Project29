@@ -15,6 +15,8 @@
 		3C5454FB26526CC5000E8F08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C5454F926526CC5000E8F08 /* Main.storyboard */; };
 		3C5454FD26526CCD000E8F08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5454FC26526CCD000E8F08 /* Assets.xcassets */; };
 		3C54550C265397D5000E8F08 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C54550B265397D5000E8F08 /* BuildingNode.swift */; };
+		3C54551126551430000E8F08 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C54550F26551430000E8F08 /* hitBuilding.sks */; };
+		3C54551226551430000E8F08 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3C54551026551430000E8F08 /* hitPlayer.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3C5454FC26526CCD000E8F08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C5454FE26526CCD000E8F08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C54550B265397D5000E8F08 /* BuildingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		3C54550F26551430000E8F08 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		3C54551026551430000E8F08 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				3C5454F926526CC5000E8F08 /* Main.storyboard */,
 				3C5454FC26526CCD000E8F08 /* Assets.xcassets */,
 				3C5454FE26526CCD000E8F08 /* Info.plist */,
+				3C54550F26551430000E8F08 /* hitBuilding.sks */,
+				3C54551026551430000E8F08 /* hitPlayer.sks */,
 			);
 			path = HWS_Project29;
 			sourceTree = "<group>";
@@ -131,6 +137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5454FB26526CC5000E8F08 /* Main.storyboard in Resources */,
+				3C54551126551430000E8F08 /* hitBuilding.sks in Resources */,
+				3C54551226551430000E8F08 /* hitPlayer.sks in Resources */,
 				3C5454F226526CC5000E8F08 /* GameScene.sks in Resources */,
 				3C5454FD26526CCD000E8F08 /* Assets.xcassets in Resources */,
 				3C5454F426526CC5000E8F08 /* Actions.sks in Resources */,

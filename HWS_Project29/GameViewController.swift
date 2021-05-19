@@ -30,6 +30,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        angelChanged(angelSlider)
+        velocityChanged(velocitySlider)
         
         
         if let view = self.view as! SKView? {
@@ -69,15 +71,50 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func angelChanged(_ sender: Any) {
+        
+        angelLabel.text = "Angel: \(Int(angelSlider.value))"
+        
     }
     
     
     
     @IBAction func velocityChanged(_ sender: Any) {
+        
+        velocityLabel.text = "Velocity: \(Int(velocitySlider.value))"
+        
     }
     
     
     @IBAction func launch(_ sender: Any) {
+        
+        angelSlider.isHidden = true
+        angelLabel.isHidden = true
+        
+        velocitySlider.isHidden = true
+        velocityLabel.isHidden = true
+        
+        launchButton.isHidden = true
+    
+        currentGame.launch(angel: Int(angelSlider.value), velocity: Int(velocitySlider.value))
+        
+    }
+    
+ 
+    func activatePlayer(number: Int){
+        if number == 1 {
+            playerNumber.text = "<<< PLAYER ONE"
+        } else {
+            playerNumber.text = "PLAYER TWO >>>"
+        }
+        
+        angelSlider.isHidden = false
+        angelLabel.isHidden = false
+        
+        velocitySlider.isHidden = false
+        velocitySlider.isHidden = false
+        
+        launchButton.isHidden = false
+        
     }
     
 }
