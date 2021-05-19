@@ -19,12 +19,15 @@ var banana: SKSpriteNode!
 
 var currentPlayer = 1
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var buildings = [BuildingNode]()
     weak var viewController: GameViewController!
     
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
+        
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         
         createPlayer()
@@ -130,6 +133,35 @@ class GameScene: SKScene {
     //度をラジアンに変換
     func deg2rad(degrees: Int) -> Double{
         return Double(degrees) * Double.pi / 180
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        guard let firstNode = firstBody.node else { return }
+        guard let secondNode = secondBody.node else { return }
+        
+        if firstNode.name == "banana" && secondNode.name == "building" {
+            //bananaHit
+        }
+        
+        if firstNode.name == "banana" && secondNode.name == "player1" {
+            //destroy
+        }
+        
+        if firstNode.name == "banana" && secondNode.name == "player2" {
+            //destroy
+        }
+        
     }
     
 }
